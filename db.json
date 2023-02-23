@@ -1,0 +1,47 @@
+{
+  "enquiry": [
+    {
+      "firstName": "aliakbar",
+      "lastName": "esmaeili",
+      "email": "aliakbaresmaeili98@gmail.com",
+      "mobile": "09358200532",
+      "weight": "45",
+      "height": "23",
+      "bmi": 0.44234404536862004,
+      "bmiResult": "underWeight",
+      "gender": "Male",
+      "requireTrainer": "Yes",
+      "package": "Monthly",
+      "important": [
+        "Toxic Fat reduction",
+        "Energy and Endurance",
+        "Building Lean Muscle",
+        "Healtheir Digestive System",
+        "Sugar Craving Body"
+      ],
+      "haveGymBefore": "Yes",
+      "enquireDate": "2023-02-23T20:30:00.000Z",
+      "id": 1
+    },
+    {
+      "firstName": "",
+      "lastName": "",
+      "email": "",
+      "mobile": "",
+      "weight": "84",
+      "height": "180",
+      "bmi": 0.0005555555555555556,
+      "bmiResult": "underWeight",
+      "gender": "Male",
+      "requireTrainer": "Yes",
+      "package": "Monthly",
+      "important": [
+        "Healtheir Digestive System",
+        "Sugar Craving Body"
+      ],
+      "haveGymBefore": "Yes",
+      "enquireDate": "2023-02-15T20:30:00.000Z",
+      "id": 2
+    }
+  ]
+}

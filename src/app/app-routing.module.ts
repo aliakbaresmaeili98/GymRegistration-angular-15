@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'list', component: RegistrationListComponent },
   { path: 'detail/:id', component: UserDetailComponent },
   { path: 'update/:id', component: CreateRegistrationComponent },
+  { path:'**' , redirectTo:'register', pathMatch:'full' }
 ];
 
 @NgModule({

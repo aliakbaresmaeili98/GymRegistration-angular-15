@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { User } from '../models/user.mode';
@@ -25,6 +25,10 @@ export class CreateRegistrationComponent implements OnInit {
   public registerForm!: FormGroup;
   public userIdToUpdate!: number;
   public isUpdateActive: boolean = false;
+
+  public get f(): { [key: string]: AbstractControl } {
+    return this.registerForm.controls;
+  }
 
   constructor(
     private fb: FormBuilder,
@@ -92,25 +96,32 @@ export class CreateRegistrationComponent implements OnInit {
   }
 
   calculateBmi(heightValue: number) {
-    const weight = this.registerForm.value.height;
-    const height = heightValue;
-    const bmi = weight / (height * height);
-    this.registerForm.controls['bmi'].patchValue(bmi);
+    const weight: number = Number(this.f['weight'].value);
+    const height: number = Number(heightValue);
+    const bmi: number = weight / (height * height);
 
+    this.registerForm.controls['bmiResult'].setValue(this.setBmiResult(bmi));
+    this.registerForm.controls['bmi'].patchValue(bmi);
+  }
+
+  setBmiResult(bmiIndex: number): string {
+    let result: string = '';
     switch (true) {
-      case bmi < 18.5:
-        this.registerForm.controls['bmiResult'].patchValue('underWeight');
+      case bmiIndex <= 18.5:
+        result = 'Underweight';
         break;
-      case bmi >= 18.5 && bmi < 25:
-        this.registerForm.controls['bmiResult'].patchValue('Normal');
+      case bmiIndex >= 18.5 && bmiIndex < 25:
+        result = 'Normal';
         break;
-      case bmi >= 25 && bmi < 30:
-        this.registerForm.controls['bmiResult'].patchValue('overWeight');
+      case bmiIndex >= 25 && bmiIndex < 30:
+        result = 'overWeight';
         break;
       default:
-        this.registerForm.controls['bmiResult'].patchValue('Obese');
+        result = 'Obese';
         break;
     }
+
+    return result;
   }
 
   fillFormToUpdate(user: User) {
